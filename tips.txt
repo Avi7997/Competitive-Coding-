@@ -1,0 +1,41 @@
+C++ hacks:
+
+--> Set in STL is implemented using self balancing binary tree(So it is always SORTED).
+	set<int> set1;
+
+--> Lower Bound & Upper Bound:
+		
+		5 5 5 6 6 6 7 7
+		lower = lower_bound (v.begin(), v.end(), 6);
+		upper = upper_bound (v.begin(), v.end(), 6);
+		lower = 3 and upper 6
+
+--> sort vector in Descending order:
+
+    	sort(ar.begin(), ar.end(), greater<int>());
+
+--> ForEach loop:
+		for (int x : arr)
+		    cout << x << endl;
+		for(auto x : arr) also works!
+
+--> To find the MOST SIGNIFICANT digit
+
+		Let double K = log10(N);
+		now K = K - floor(K);
+		int X = pow(10, K);
+		X will be the most significant digit.
+
+--> Number of DIGITS
+
+    	Number of digits in N =floor(log10(N)) + 1;
+
+--> Sort vector of pairs
+	
+	To sort by FIRST element
+		sort(vect.begin(), vect.end());	
+	To sort by SECOND element
+		bool sortbysec(const pair<int,int> &a, const <int,int> &b){
+			return (a.second<b.second);	
+		}
+		sort(vect.begin(), vect.end(), sortbysec);
