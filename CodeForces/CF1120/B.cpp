@@ -35,7 +35,7 @@ typedef vector<string> vstr;
 typedef vector<um<int, int>> graph;
 
 #define RANGE(i,a,b,d) for (int i=min((int)a,(int)b); i<max((int)a,(int)b); i+=d)
-#define RRANGE(i,a,b,d) for (int i=max((int)a,(int)b); i>min((int)a,(int)b); i-=d)
+#define RRANGE(i,a,b,d) for (int i=max((int)a,(int)b); i>min((int)a,(int)b); i+=d)
 #define FOR(i,a,b) RANGE(i,a,b,1)
 #define RFOR(i,a,b) RRANGE(i,a,b,-1)
 #define REP(i,s) FOR(i,0,s)
@@ -75,7 +75,11 @@ template<class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
 template <typename T>
 void print(T t){
   cout << t << endl;
-}
+}// FOR(i,0,n){
+  //     FOR(j,0,n)
+  //       cout<<visited[i][j]<<" ";
+  //   cout<<endl;
+  // }
 
 //Python style printing
 template<typename T, typename... Args>
@@ -87,5 +91,57 @@ void print(T t, Args... args){
 int main(){
   ios::sync_with_stdio(false);
   cin.tie(0);
+  int n;
+  cin>>n;
+  int ar1[n+1],ar2[n+1];
+  memset(ar1,-1,sizeof(ar1));
+  memset(ar2,-1,sizeof(ar2));
+  for(int i=0;i<2*n;i++){
+      int x;
+      cin>>x;
+      if(ar1[x] == -1)  ar1[x]=i;
+      else ar2[x] = i;
+  }
+  long long int ans = 0;
+  int x;
+
+  if(ar1[1]<ar2[1]){
+  ans += ar1[1];
+  x = ar1[1];
+  ar1[1] =-1;}
+  else{
+      ans += ar2[1];
+      x = ar2[1];
+      ar2[1] =-1;
+  }
+  for(int i=2;i<=n;i++){
+      if(abs(x-ar1[i])>abs(x-ar2[i])){
+          ans += abs(x-ar2[i]);
+          x = ar2[i];
+          ar2[i] =-1;
+      }
+      else{
+          ans += abs(x-ar1[i]);
+          x = ar1[i];
+          ar1[i] =-1;
+      }
+  }
+
+  if(ar1[1] == -1)
+      x= ar2[1];
+  else
+    x = ar1[1];
+  ans+=x;
+  for(int i=2;i<=n;i++){
+      if(ar1[i]==-1){
+          ans+=abs(x-ar2[i]);
+          x=ar2[i];
+      }
+      else{
+          ans+=abs(x-ar1[i]);
+          x=ar1[i];
+      }
+  }
+  cout<<ans;
   return 0;
 }

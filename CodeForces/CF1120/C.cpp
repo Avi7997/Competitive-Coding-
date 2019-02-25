@@ -35,7 +35,7 @@ typedef vector<string> vstr;
 typedef vector<um<int, int>> graph;
 
 #define RANGE(i,a,b,d) for (int i=min((int)a,(int)b); i<max((int)a,(int)b); i+=d)
-#define RRANGE(i,a,b,d) for (int i=max((int)a,(int)b); i>min((int)a,(int)b); i-=d)
+#define RRANGE(i,a,b,d) for (int i=max((int)a,(int)b); i>min((int)a,(int)b); i+=d)
 #define FOR(i,a,b) RANGE(i,a,b,1)
 #define RFOR(i,a,b) RRANGE(i,a,b,-1)
 #define REP(i,s) FOR(i,0,s)
@@ -68,7 +68,7 @@ namespace std{
     }
   };
 };
-
+int xyz;
 // This is min queue
 template<class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
 
@@ -84,8 +84,80 @@ void print(T t, Args... args){
   print(args...);
 }
 
+long long int ans = INT_MAX;
+long long int dis(int r1, int c1, int r2, int c2){
+    return (abs(r1-r2)*abs(r1-r2) + abs(c1-c2)*abs(c1-c2));
+}
+int isSafe(int M[][50], int row, int col, int visited[][50])
+{
+    // row number is in range, column number is in range and value is 1
+    // and not yet visited
+    return (row >= 0) && (row < xyz) &&
+           (col >= 0) && (col < xyz) &&
+           (M[row][col]==0 && !visited[row][col]);
+}
+
+void DFS(int M[][50], int row, int col, int visited[][50],int de)
+{
+    // These arrays are used to get row and column numbers of 8 neighbours
+    // of a given cell
+    static int rowNbr[] = { -1,   0, 0,   1};
+    static int colNbr[] = {  0,   -1, 1, 0 };
+
+    // Mark this cell as visited
+    if(de == 0) visited[row][col] = 1;
+    else visited[row][col] = 2;
+    // Recur for all connected neighbours
+    for (int k = 0; k < 4; ++k)
+        if (isSafe(M, row + rowNbr[k], col + colNbr[k], visited) )
+            DFS(M, row + rowNbr[k], col + colNbr[k], visited,de);
+}
 int main(){
   ios::sync_with_stdio(false);
   cin.tie(0);
+  int n,r1,r2,c1,c2;
+  cin>>n>>r1>>c1>>r2>>c2;
+  xyz = n;
+  r1--;c1--;r2--;c2--;
+  int ar[n][50];
+  for(int i=0;i<n;i++){
+      string str;
+      cin>>str;
+      for(int j=0;j<n;j++){
+          ar[i][j] = str[j]-'0';
+      }
+  }
+
+  int visited[n][50];
+  memset(visited, 0, sizeof(visited));
+
+  visited[r1][c1] = 1;
+  DFS(ar, r1, c1, visited,0);
+  if(visited[r2][c2] == 1){   cout<<"0"; return 0;}
+  visited[r2][c2] = 2;
+  DFS(ar, r2, c2, visited,1);
+
+
+
+  // FOR(i,0,n){
+  //     FOR(j,0,n)
+  //       cout<<visited[i][j]<<" ";
+  //   cout<<endl;
+  // }
+
+  FOR(i,0,n){
+      FOR(j,0,n){
+          if(visited[i][j] == 1){
+              FOR(p,0,n){
+                  FOR(q,0,n){
+                      if(visited[p][q] == 2)
+                        if(ans>dis(i,j,p,q))
+                            ans = dis(i,j,p,q);
+                  }
+              }
+          }
+      }
+  }
+  cout<<ans;
   return 0;
 }

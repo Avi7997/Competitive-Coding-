@@ -35,7 +35,7 @@ typedef vector<string> vstr;
 typedef vector<um<int, int>> graph;
 
 #define RANGE(i,a,b,d) for (int i=min((int)a,(int)b); i<max((int)a,(int)b); i+=d)
-#define RRANGE(i,a,b,d) for (int i=max((int)a,(int)b); i>min((int)a,(int)b); i-=d)
+#define RRANGE(i,a,b,d) for (int i=max((int)a,(int)b); i>min((int)a,(int)b); i+=d)
 #define FOR(i,a,b) RANGE(i,a,b,1)
 #define RFOR(i,a,b) RRANGE(i,a,b,-1)
 #define REP(i,s) FOR(i,0,s)
@@ -87,5 +87,20 @@ void print(T t, Args... args){
 int main(){
   ios::sync_with_stdio(false);
   cin.tie(0);
+  ll k;
+  vl ans;
+  ans.pb(-1);
+  cin>>k;
+  ll s =0;
+  ll n=1;
+  while((s-n)<k){
+      ll x =min(k+1+n-s, 1000000LL);
+      ans.pb(x);
+      s+=x;
+      n++;
+      //cout<<(s-n+1)<<" "<<n<<endl;
+  }
+  cout<<n<<endl;
+  pv(ans);
   return 0;
 }

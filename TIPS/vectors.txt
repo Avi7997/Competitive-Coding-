@@ -1,0 +1,9 @@
+intialize array:
+    fill(vec, vec+n, INT_MAX);
+
+
+Intialize vector:
+    1d vector : vector<int> vec(10,5)                       {vector of size of 10 with all values 5}
+    2d vector : vector<vector<int>> vec(10, vector<int>())  {rows will 10 nothing about columns}
+                vector<vector<int>> vec(10, vector<int>(15,-1))
+                {row 10 columns 15 all values -1}
