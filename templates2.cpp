@@ -35,7 +35,7 @@ typedef vector<string> vstr;
 typedef vector<um<int, int>> graph;
 
 #define RANGE(i,a,b,d) for (int i=min((int)a,(int)b); i<max((int)a,(int)b); i+=d)
-#define RRANGE(i,a,b,d) for (int i=max((int)a,(int)b); i>min((int)a,(int)b); i-=d)
+#define RRANGE(i,a,b,d) for (int i=max((int)a,(int)b); i>min((int)a,(int)b); i+=d)
 #define FOR(i,a,b) RANGE(i,a,b,1)
 #define RFOR(i,a,b) RRANGE(i,a,b,-1)
 #define REP(i,s) FOR(i,0,s)
