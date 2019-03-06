@@ -6,8 +6,9 @@ C++ hacks:
 --> Lower Bound & Upper Bound:
 		
 		5 5 5 6 6 6 7 7
-		lower = lower_bound (v.begin(), v.end(), 6);
-		upper = upper_bound (v.begin(), v.end(), 6);
+		vector<int>::iterator lower = lower_bound (v.begin(), v.end(), 6);
+		vector<int>::iterator upper = upper_bound (v.begin(), v.end(), 6);
+		else use auto lower = 
 		lower = 3 and upper 6
 
 --> sort vector in Descending order:
@@ -39,3 +40,7 @@ C++ hacks:
 			return (a.second<b.second);	
 		}
 		sort(vect.begin(), vect.end(), sortbysec);
+
+--> Difference between ordered and unordered map in c++
+		
+	https://www.geeksforgeeks.org/map-vs-unordered_map-c/	

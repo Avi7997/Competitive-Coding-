@@ -1,0 +1,20 @@
+--> To find whether one string is not in another:
+	Always use KMP O(n+m) = O(n) where n>m
+	or to find biggest common sub string:
+		same algo 
+		just use extra variable max 
+		and find highest value of j achieved
+
+
+--> ANY FINTECH COMAPNY HireView Interview
+	// to take input of line	
+	string name;
+	getline(cin, name);
+	
+	//extract data from that line
+	//comma separated integers
+	string token;
+	stringstream ss(name);
+	while( getline( ss, token, ',')){
+		int x = stoi(token);
+	}
