@@ -29,7 +29,7 @@ Sorting:
 			return (a>b);		
 		}	
 		Other way is:
-		struct sortby(){
+		struct sortby{
 			inline bool operator() (const int a, const int b){
 				return (a>b);
 			}
