@@ -7,3 +7,44 @@ Intialize vector:
     2d vector : vector<vector<int>> vec(10, vector<int>())  {rows will 10 nothing about columns}
                 vector<vector<int>> vec(10, vector<int>(15,-1))
                 {row 10 columns 15 all values -1}
+
+
+Iterator:
+
+	vactor<int>::iterator it;
+	it = vec.begin();  	//it's pointer so use with -> in map
+	
+	to move it to 6th element
+	advance(it, 5);
+
+Sorting:
+	
+	sort(vec.begin(), vec.end());
+	sort(vec.begin(), vec.end(), greater<int>());
+	descending by your own->
+		
+		This function basically means should first value go before second value?
+		
+		bool sortby(const int a, const int b){
+			return (a>b);		
+		}	
+		Other way is:
+		struct sortby(){
+			inline bool operator() (const int a, const int b){
+				return (a>b);
+			}
+		};
+
+Priority Queue:
+	priority_queue<int> pq;					//max
+	priority_queue<int, vector<int>, greater<int>> pq; 	//min queue
+	
+	last argument is compare class
+	you can pass you own by making just like in sorting above.
+
+
+IMPORTANT TO KNOW:
+	priority_queue<int, vector<int>, sortby> pq; 	// or we can say greater<> 
+	sort(vec.begin(), vec.end(), sortby ());	// greater<>()
+
+	sort takes function as third argument, while pq takes class as an argument.

@@ -44,3 +44,10 @@ C++ hacks:
 --> Difference between ordered and unordered map in c++
 		
 	https://www.geeksforgeeks.org/map-vs-unordered_map-c/	
+
+
+--> Declare array of Pointers:
+	Node *temp[10];
+	at first all have garbage values
+	to initialize this
+	Node *temp[10] = {NULL}
