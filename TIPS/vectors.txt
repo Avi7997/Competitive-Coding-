@@ -29,11 +29,16 @@ Sorting:
 			return (a>b);		
 		}	
 		Other way is:
-		struct sortby{
+		struct SortBy{
+			//option 1
+			bool operator() (int a, int b){
+				return (a>b);
+			}
+			//option 2
 			inline bool operator() (const int a, const int b){
 				return (a>b);
 			}
-		};
+		} sortby;
 
 Priority Queue:
 	priority_queue<int> pq;					//max
@@ -44,7 +49,7 @@ Priority Queue:
 
 
 IMPORTANT TO KNOW:
-	priority_queue<int, vector<int>, sortby> pq; 	// or we can say greater<> 
-	sort(vec.begin(), vec.end(), sortby ());	// greater<>()
+	priority_queue<int, vector<int>, SortBy> pq; 	// it expects class or structure 
+	sort(vec.begin(), vec.end(), sortby);	// object of that structure or class
 
 	sort takes function as third argument, while pq takes class as an argument.
