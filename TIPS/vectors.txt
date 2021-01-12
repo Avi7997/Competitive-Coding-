@@ -50,6 +50,6 @@ Priority Queue:
 
 IMPORTANT TO KNOW:
 	priority_queue<int, vector<int>, SortBy> pq; 	// it expects class or structure 
-	sort(vec.begin(), vec.end(), sortby);	// object of that structure or class
+	sort(vec.begin(), vec.end(), sortby);	// it expects function OR object of that structure or class
 
 	sort takes function as third argument, while pq takes class as an argument.
