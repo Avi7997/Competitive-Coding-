@@ -40,16 +40,24 @@ Sorting:
 			}
 		} sortby;
 
+
+IMPORTANT TO KNOW:
+	priority_queue<int, vector<int>, SortBy> pq; 	// it expects class or structure (More common in JAVA)
+	sort(vec.begin(), vec.end(), sortby);	// it expects function OR object of that structure or class
+
+	sort takes function as third argument, while pq takes class as an argument.
+
+
 Priority Queue:
 	priority_queue<int> pq;					//max
 	priority_queue<int, vector<int>, greater<int>> pq; 	//min queue
 	
 	last argument is compare class
 	you can pass you own by making just like in sorting above.
+	
+	generally pq will be 		--> 10 20 20 30 (Max Heap).  30 being the top!
+	'greater<int>' will make vector --> 30 20 20 10, so it will become Min Heap! (10 on top)
+	
 
 
-IMPORTANT TO KNOW:
-	priority_queue<int, vector<int>, SortBy> pq; 	// it expects class or structure 
-	sort(vec.begin(), vec.end(), sortby);	// it expects function OR object of that structure or class
 
-	sort takes function as third argument, while pq takes class as an argument.
