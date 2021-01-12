@@ -5,11 +5,14 @@ C++ hacks:
 
 --> Lower Bound & Upper Bound:
 		
-		5 5 5 6 6 6 7 7
-		vector<int>::iterator lower = lower_bound (v.begin(), v.end(), 6);
-		vector<int>::iterator upper = upper_bound (v.begin(), v.end(), 6);
-		else use auto lower = 
-		lower = 3 and upper 6
+		vector<int>::iterator lower = lower_bound (v.begin(), v.end(), 3);
+		vector<int>::iterator upper = upper_bound (v.begin(), v.end(), 3);
+		else use auto lower = same as above
+		arr = 1 2 4 4 5
+		For 4, lower = 2 and upper = 3
+		For 3, lower = 2 and upper = 2
+		For 0, lower = 0 and upper = 0
+		For 6, lower = 5 and upper = 5
 
 --> sort vector in Descending order:
 
